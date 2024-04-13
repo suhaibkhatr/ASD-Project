@@ -16,3 +16,10 @@ supplier user can link multiple procducts with multiple categories
 customer can see the product for different storehouse
 customer can search for products based on categories
 
+
+Implement robust authentication and authorization mechanisms to protect sensitive data.
+Encrypt data transmission and storage to prevent unauthorized access.
+Regularly update software and apply security patches to address vulnerabilities.
+
+Design the system to handle a large volume of transactions and users.
+Optimize performance to ensure fast response times and minimal downtime.
