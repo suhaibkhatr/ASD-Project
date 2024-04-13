@@ -1,0 +1,18 @@
+Users will be able to register and login with specific role
+each role has its own access levels and permissions
+
+super admin role has the ability to verfiy the other users
+super admin has the full access on system
+
+supplier user can create delete update the storehouse info
+supplier user can see only his created storehouse
+supplier user can create delete update categories
+supplier user can see only his created categories
+supplier user can create delete update products
+supplier user can see only his created products
+supplier user can link multiple procducts with multiple categories
+
+
+customer can see the product for different storehouse
+customer can search for products based on categories
+
