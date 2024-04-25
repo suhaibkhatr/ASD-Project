@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(User::class, "user_id");
             $table->foreignIdFor(Storehouse::class, "storehouse_id");
-            $table->timestamps();
         });
     }
 

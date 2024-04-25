@@ -11,7 +11,7 @@ class StoreStorehouseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreStorehouseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title" => "required|max:50",
+            "address" => "required|max:255",
+            "city" => "required|max:255",
+            "state" => "required|max:255",
+            "storehouse_type_id" => "required|int",
         ];
     }
 }

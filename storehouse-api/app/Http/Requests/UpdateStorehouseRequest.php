@@ -11,7 +11,7 @@ class UpdateStorehouseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateStorehouseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title" => "max:50",
+            "address" => "max:255",
+            "city" => "max:255",
+            "state" => "max:255",
+            "storehouse_type_id" => "int",
         ];
     }
 }

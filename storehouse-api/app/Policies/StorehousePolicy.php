@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Storehouse;
 use App\Models\User;
+use App\RolesEnum;
 use Illuminate\Auth\Access\Response;
 
 class StorehousePolicy
@@ -13,7 +14,7 @@ class StorehousePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->role_id == RolesEnum::ADMIN;
     }
 
     /**
@@ -21,7 +22,8 @@ class StorehousePolicy
      */
     public function view(User $user, Storehouse $storehouse): bool
     {
-        //
+        return $user->role_id == RolesEnum::ADMIN ||
+            $user->storehouses()->find($storehouse->id);
     }
 
     /**
@@ -37,7 +39,7 @@ class StorehousePolicy
      */
     public function update(User $user, Storehouse $storehouse): bool
     {
-        //
+        return true;
     }
 
     /**

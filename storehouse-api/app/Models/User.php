@@ -54,4 +54,9 @@ class User extends Authenticatable implements JWTSubject
             "role_id" => $this->role_id,
         ];
     }
+
+    public function storehouses()
+    {
+        return $this->belongsToMany(Storehouse::class, "storehouse_users");
+    }
 }
