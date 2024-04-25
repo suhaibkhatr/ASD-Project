@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StorehouseController;
 
 Route::group(
@@ -33,5 +34,21 @@ Route::group(
     ],
     function ($router) {
         Route::apiResource("storehouse", StorehouseController::class);
+        Route::get("categories/{storehouse_id}/{category_id}", [
+            CategoryController::class,
+            "show",
+        ]);
+        Route::put("categories/{storehouse_id}/{category_id}", [
+            CategoryController::class,
+            "update",
+        ]);
+        Route::delete("categories/{storehouse_id}/{category_id}", [
+            CategoryController::class,
+            "destroy",
+        ]);
+        Route::apiResource(
+            "categories/{storehouse_id}",
+            CategoryController::class
+        );
     }
 );
