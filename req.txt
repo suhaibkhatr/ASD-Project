@@ -13,10 +13,6 @@ supplier user can see only his created products
 supplier user can link multiple procducts with multiple categories
 
 
-customer can see the product for different storehouse
-customer can search for products based on categories
-
-
 Implement robust authentication and authorization mechanisms to protect sensitive data.
 Encrypt data transmission and storage to prevent unauthorized access.
 Regularly update software and apply security patches to address vulnerabilities.
