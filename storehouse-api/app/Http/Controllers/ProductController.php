@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\CategoryProduct;
 use App\Models\Product;
 use App\Models\Storehouse;
 
@@ -30,6 +31,17 @@ class ProductController extends Controller
             "quantity" => $request->quantity ?? 1,
             "storehouse_id" => $storehouse_id,
         ]);
+
+        if ($product && !empty($request->categories)) {
+            $data = [];
+            foreach ($request->categories as $id) {
+                $data[] = [
+                    "category_id" => $id,
+                    "product_id" => $product->id,
+                ];
+            }
+            CategoryProduct::insert($data);
+        }
 
         return response()->json($product, 201);
     }
@@ -62,6 +74,19 @@ class ProductController extends Controller
                 "price" => $request->price ?? $product->price,
                 "quantity" => $request->quantity ?? $product->quantity,
             ]);
+
+            if ($product && !empty($request->categories)) {
+                CategoryProduct::where("product_id", $product->id)->delete();
+                $data = [];
+                foreach ($request->categories as $id) {
+                    $data[] = [
+                        "category_id" => $id,
+                        "product_id" => $product->id,
+                    ];
+                }
+                CategoryProduct::insert($data);
+            }
+
             return response()->json($product, 200);
         }
         return response()->json(["success" => 0], 404);
