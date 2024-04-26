@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StorehouseController;
 
 Route::group(
@@ -34,6 +35,15 @@ Route::group(
     ],
     function ($router) {
         Route::apiResource("storehouse", StorehouseController::class);
+
+        Route::get("categories/{storehouse_id}", [
+            CategoryController::class,
+            "index",
+        ]);
+        Route::post("categories/{storehouse_id}", [
+            CategoryController::class,
+            "store",
+        ]);
         Route::get("categories/{storehouse_id}/{category_id}", [
             CategoryController::class,
             "show",
@@ -46,9 +56,26 @@ Route::group(
             CategoryController::class,
             "destroy",
         ]);
-        Route::apiResource(
-            "categories/{storehouse_id}",
-            CategoryController::class
-        );
+
+        Route::get("products/{storehouse_id}", [
+            ProductController::class,
+            "index",
+        ]);
+        Route::post("products/{storehouse_id}", [
+            ProductController::class,
+            "store",
+        ]);
+        Route::get("products/{storehouse_id}/{product_id}", [
+            ProductController::class,
+            "show",
+        ]);
+        Route::put("products/{storehouse_id}/{product_id}", [
+            ProductController::class,
+            "update",
+        ]);
+        Route::delete("products/{storehouse_id}/{product_id}", [
+            ProductController::class,
+            "destroy",
+        ]);
     }
 );
